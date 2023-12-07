@@ -1246,6 +1246,11 @@ public class AndroidUtilities {
 
     public static Bitmap snapshotView(View v) {
         Bitmap bm = Bitmap.createBitmap(v.getWidth(), v.getHeight(), Bitmap.Config.ARGB_8888);
+        snapshotView(v, bm);
+        return bm;
+    }
+
+    public static void snapshotView(View v, Bitmap bm) {
         Canvas canvas = new Canvas(bm);
         v.draw(canvas);
 
@@ -1253,7 +1258,6 @@ public class AndroidUtilities {
         v.getLocationInWindow(loc);
         snapshotTextureViews(loc[0], loc[1], loc, canvas, v);
 
-        return bm;
     }
 
     private static void snapshotTextureViews(int rootX, int rootY, int[] loc, Canvas canvas, View v) {
